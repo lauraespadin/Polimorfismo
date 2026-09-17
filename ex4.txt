@@ -1,0 +1,52 @@
+public interface IInotificacao
+    {
+        void Enviar();
+    }
+
+ public class NotificacaoEmail : IInotificacao
+    {
+        public void Enviar()
+        {
+            Console.WriteLine("Enviando notificação por email...");
+        }
+
+        public void Enviar(string anexo)
+        {
+            Console.WriteLine($"Enviando email com anexo: {anexo}");
+        }
+    }
+
+public class NotificacaoSMS : IInotificacao
+    {
+        public void Enviar()
+        {
+            Console.WriteLine("enviando notificação por SMS...");
+        }
+    }
+
+public class NotificacaoPush : IInotificacao
+    {
+        public void Enviar()
+        {
+            Console.WriteLine("Enviando notificaçao push para o app...");
+        }
+    }
+
+            List<IInotificacao> notificacoes = new List<IInotificacao>();
+
+            notificacoes.Add(new NotificacaoEmail());
+            notificacoes.Add(new NotificacaoSMS());
+            notificacoes.Add(new NotificacaoPush());
+
+            foreach (IInotificacao notificacao in notificacoes)
+            {
+                notificacao.Enviar();
+            }
+
+            Console.WriteLine();
+
+            NotificacaoEmail email = new NotificacaoEmail();
+
+            email.Enviar();
+            email.Enviar("documento.pdf");
+        }

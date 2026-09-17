@@ -1,20 +1,28 @@
-﻿namespace Heranca
+﻿using Polimorfismo;
+
+namespace Heranca
 {
     internal class Program
     {
         static void Main(string[] args)
         {
-            Geometria geometria = new Geometria();
+            List<IInotificacao> notificacoes = new List<IInotificacao>();
 
-            double areaQuadrado = geometria.CalcularArea(5);
+            notificacoes.Add(new NotificacaoEmail());
+            notificacoes.Add(new NotificacaoSMS());
+            notificacoes.Add(new NotificacaoPush());
 
-            double areaRetangulo = geometria.CalcularArea(40, 4);
+            foreach (IInotificacao notificacao in notificacoes)
+            {
+                notificacao.Enviar();
+            }
 
-            double areaCirculo = geometria.CalcularArea(6, true);
+            Console.WriteLine();
 
-            Console.WriteLine($"Área do quadrado: {areaQuadrado:F2}");
-            Console.WriteLine($"Área do retângulo: {areaRetangulo:F2}");
-            Console.WriteLine($"Área do círculo: {areaCirculo:F2}");
+            NotificacaoEmail email = new NotificacaoEmail();
+
+            email.Enviar();
+            email.Enviar("documento.pdf");
         }
     }
 }

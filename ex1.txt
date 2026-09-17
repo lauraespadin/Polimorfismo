@@ -1,0 +1,30 @@
+ public class Geometria
+    {
+        
+        public double CalcularArea(double lado)
+        {
+            return lado * lado;
+        }
+
+        public double CalcularArea(double baseRetangulo, double altura)
+        {
+            return baseRetangulo * altura;
+        }
+
+        public double CalcularArea(double raio, bool isCirculo)
+        {
+            return Math.PI * raio * raio;
+        }
+    }
+
+Geometria geometria = new Geometria();
+
+            double areaQuadrado = geometria.CalcularArea(5);
+
+            double areaRetangulo = geometria.CalcularArea(40, 4);
+
+            double areaCirculo = geometria.CalcularArea(6, true);
+
+            Console.WriteLine($"Área do quadrado: {areaQuadrado:F2}");
+            Console.WriteLine($"Área do retângulo: {areaRetangulo:F2}");
+            Console.WriteLine($"Área do círculo: {areaCirculo:F2}");
